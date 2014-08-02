@@ -1,0 +1,7 @@
+This is yet another reimplementation of the Dwarf Fortress libgraphics.so build
+system. There are two build options available, plain Makefile and autotools,
+with the former almost certainly working better on all Linux systems. Select one
+with `git checkout makefile' or `git checkout autotools', then run get_df.sh
+with no arguments to download DF, or one argument to extract it from a
+pre-downloaded archive. Manually extracting Dwarf Fortress is *NOT SUPPORTED*.
+Do NOT copy all Dwarf Fortress files on top of this directory.
