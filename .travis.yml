@@ -1,4 +1,5 @@
 language: cpp
+install: ./.travis.sh
 script: ./get_df.sh
 compiler:
   - clang
