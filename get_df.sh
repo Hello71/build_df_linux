@@ -17,9 +17,12 @@ unpack() {
 }
 
 if [ -n "$1" ]; then
+    echo "Unpacking Dwarf Fortress from ${1}..." >&2
     unpack -f "$1"
 else
+    echo "Downloading and unpacking Dwarf Fortress..." >&2
     curl http://www.bay12games.com/dwarves/df_${DF_VER}_linux.tar.bz2 | unpack
 fi
 
+echo "Building Dwarf Fortress..." >&2
 exec $BUILD
