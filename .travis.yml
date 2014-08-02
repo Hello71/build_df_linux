@@ -1,0 +1,8 @@
+language: cpp
+script: ./get_df.sh
+compiler:
+  - clang
+  - gcc
+notifications:
+  email:
+    - alex_y_xu@yahoo.ca
