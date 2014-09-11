@@ -11,20 +11,26 @@ Select one with ``git checkout makefile`` or ``git checkout autotools``, then ru
 Manually extracting Dwarf Fortress is *NOT SUPPORTED*.
 Do NOT copy all Dwarf Fortress files on top of this directory.
 
+When upgrading, it is recommended that you back up your init files and saves then ``git clean -fdx`` to delete DF before unpacking the new version.
+
 Requirements
 ============
 
-Dwarf Fortress requires a sizable number of 32-bit libraries; the pkg-config names are given below.
+Dwarf Fortress requires a sizable number of 32-bit libraries to run; the pkg-config names are given below.
 
 - glew
 - glu
 - gtk+-2.0
-- openal
 - sdl
 - SDL_image
 - SDL_ttf
-- sndfile
 - zlib
+
+The following libraries are required at compile-time, but are optional at run-time:
+
+- ncurses
+- openal
+- sndfile
 
 Ubuntu 11.04 and before
 -----------------------
