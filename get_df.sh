@@ -5,7 +5,7 @@ set -e
 if [ -x build.sh ]; then
     BUILD="./build.sh"
 elif [ -f Makefile ]; then
-    BUILD="make $MAKEFLAGS"
+    BUILD="make"
 else
     echo "You must select a build system, see README for details." >&2
     echo "Run this script from the root of the build directory." >&2
@@ -29,12 +29,13 @@ else
     case "$1" in
     *.*.*)
         min="${1#${maj}}"
-        DF="df_${min//./_}_linux.tar.bz2"
+        # posix doesn't have ${//}
+        DF="df_${min%.*}_${min#*.}_linux.tar.bz2"
         ver="$1"
         ;;
     *)
         printf "No argument provided, finding latest DF version...\n" >&2
-        DF="$(curl http://www.bay12games.com/dwarves/ 2>/dev/null | grep -Eom1 'df_[0-9]{2}_[0-9]{2}_linux\.tar\.bz2')"
+        DF="$(curl http://www.bay12games.com/dwarves/ | grep -Eom1 'df_[0-9]{2}_[0-9]{2}_linux\.tar\.bz2')"
         tmp="${df#df_}"
         tmp="${tmp%%_linux*}"
         ver="${maj}${tmp//_/.}"
@@ -43,4 +44,4 @@ else
     curl http://www.bay12games.com/dwarves/"$DF" | unpack
 fi
 
-printf "Done. You can now run \`%s' to build DF." "$BUILD"
+printf "Done. You can now run \`%s' to build DF.\n" "$BUILD"
